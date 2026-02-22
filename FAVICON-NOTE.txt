@@ -1,0 +1,4 @@
+The favicon.svg will work for most modern browsers.
+For apple-touch-icon.png (iOS home screen icon), you can:
+1. Use an online tool to convert favicon.svg to 180x180 PNG
+2. Or use this command if you have ImageMagick: convert favicon.svg -resize 180x180 apple-touch-icon.png
