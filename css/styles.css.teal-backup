@@ -1,0 +1,572 @@
+/* ============================================
+   LEADERSHIP PERMIT WEBSITE STYLES
+   Teal + Light Orange + Warm Cream Theme
+   ============================================ */
+
+/* ============================================
+   RESET & BASE STYLES
+   ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #1f2937;
+    background: #ffffff;
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    line-height: 1.2;
+    color: #111827;
+    margin-bottom: 1rem;
+}
+
+h1 { font-size: 3rem; }
+h2 { font-size: 2.25rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+
+p {
+    margin-bottom: 1rem;
+}
+
+.lead {
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1.7;
+    color: #374151;
+}
+
+/* ============================================
+   LAYOUT
+   ============================================ */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.section {
+    padding: 5rem 0;
+}
+
+.section-gray {
+    background: #fef3c7;
+}
+
+.section-navy {
+    background: #0f766e;
+    color: #ffffff;
+}
+
+.section-teal {
+    background: #0f766e;
+    color: #ffffff;
+}
+
+.section-navy h2,
+.section-navy p {
+    color: #ffffff;
+}
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
+.nav {
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.logo {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #0f766e;
+    text-decoration: none;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #374151;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.nav-menu a:hover {
+    color: #0f766e;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+.btn-primary,
+.btn-secondary,
+.btn-primary-small {
+    display: inline-block;
+    padding: 0.875rem 2rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.btn-primary {
+    background: #0f766e;
+    color: #ffffff !important;
+}
+
+.btn-primary:hover {
+    background: #1e40af;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: #0f766e;
+    border: 2px solid #0f766e;
+}
+
+.btn-secondary:hover {
+    background: #0f766e;
+    color: #ffffff;
+}
+
+.btn-primary-small {
+    padding: 0.5rem 1.25rem;
+    font-size: 0.875rem;
+    background: #0f766e;
+    color: #ffffff !important;
+}
+
+.btn-link {
+    color: #0f766e;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.125rem;
+}
+
+.btn-link:hover {
+    text-decoration: underline;
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+.hero {
+    background: linear-gradient(135deg, #0f766e 0%, #3b82f6 100%);
+    color: #ffffff;
+    padding: 6rem 0 8rem;
+    text-align: center;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 3rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+    color: #e0e7ff;
+}
+
+/* ============================================
+   FORMULA
+   ============================================ */
+.formula {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 1rem;
+    padding: 2.5rem 2rem;
+    margin: 3rem auto;
+    max-width: 900px;
+    backdrop-filter: blur(10px);
+}
+
+.formula-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.formula-part {
+    background: #ffffff;
+    color: #0f766e;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-size: 1.25rem;
+}
+
+.formula-operator,
+.formula-equals {
+    font-size: 2rem;
+    color: #ffffff;
+}
+
+.formula-result {
+    background: #fb923c;
+    color: #ffffff;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-size: 1.25rem;
+}
+
+/* ============================================
+   HERO CTA
+   ============================================ */
+.hero-cta {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-top: 2.5rem;
+}
+
+.hero-cta .btn-secondary {
+    border-color: #ffffff;
+    color: #ffffff;
+}
+
+.hero-cta .btn-secondary:hover {
+    background: #ffffff;
+    color: #0f766e;
+}
+
+/* ============================================
+   SECTION TITLE
+   ============================================ */
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #0f766e;
+}
+
+/* ============================================
+   CARDS & COLUMNS
+   ============================================ */
+.three-col {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.card {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.card h3 {
+    color: #0f766e;
+    margin-bottom: 1rem;
+}
+
+/* ============================================
+   FRAMEWORK INTRO
+   ============================================ */
+.framework-intro {
+    max-width: 900px;
+    margin: 0 auto 4rem;
+    text-align: center;
+}
+
+/* ============================================
+   THREE PILLARS
+   ============================================ */
+.three-pillars {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 3rem;
+    margin: 4rem 0;
+}
+
+.pillar {
+    text-align: center;
+    padding: 2rem;
+}
+
+.pillar-icon {
+    width: 80px;
+    height: 80px;
+    background: #0f766e;
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0 auto 1.5rem;
+}
+
+.pillar h3 {
+    color: #0f766e;
+    margin-bottom: 1rem;
+    font-size: 1.75rem;
+}
+
+/* ============================================
+   CTA CENTERED
+   ============================================ */
+.cta-centered {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+/* ============================================
+   FREE OFFER
+   ============================================ */
+.free-offer {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.free-offer h2 {
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+/* ============================================
+   FORMS
+   ============================================ */
+.email-form {
+    margin-top: 2rem;
+}
+
+.form-group-inline {
+    display: flex;
+    gap: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-input {
+    flex: 1;
+    padding: 1rem 1.5rem;
+    border: 2px solid #d1d5db;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+}
+
+.section-navy .form-input {
+    border-color: rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.1);
+    color: #ffffff;
+}
+
+.section-navy .form-input::placeholder {
+    color: rgba(255,255,255,0.6);
+}
+
+.form-note {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    opacity: 0.8;
+}
+
+/* ============================================
+   BOOKS GRID
+   ============================================ */
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 3rem;
+    margin: 3rem 0;
+}
+
+.book-card {
+    text-align: center;
+    padding: 2rem;
+    background: #ffffff;
+    border-radius: 0.75rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.book-cover {
+    margin-bottom: 1.5rem;
+}
+
+.book-cover-placeholder {
+    width: 200px;
+    height: 300px;
+    background: linear-gradient(135deg, #0f766e, #3b82f6);
+    margin: 0 auto;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.book-cover-placeholder.coming-soon {
+    background: linear-gradient(135deg, #6b7280, #9ca3af);
+}
+
+.book-meta {
+    color: #6b7280;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.book-card h3 {
+    color: #0f766e;
+    margin: 1rem 0;
+}
+
+/* ============================================
+   EMAIL SIGNUP BOX
+   ============================================ */
+.email-signup-box {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 3rem;
+    background: #ffffff;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.email-signup-box h2 {
+    color: #0f766e;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+    background: #111827;
+    color: #9ca3af;
+    padding: 4rem 0 2rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.footer-col h4 {
+    color: #ffffff;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+    color: #9ca3af;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover {
+    color: #ffffff;
+}
+
+.footer-bottom {
+    border-top: 1px solid #374151;
+    padding-top: 2rem;
+    text-align: center;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 768px) {
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.75rem; }
+    
+    .hero-title {
+        font-size: 2.25rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.125rem;
+    }
+    
+    .formula-content {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .nav-menu {
+        display: none; /* Will add mobile menu in JS */
+    }
+    
+    .hero-cta {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .form-group-inline {
+        flex-direction: column;
+    }
+    
+    .section {
+        padding: 3rem 0;
+    }
+}
