@@ -78,11 +78,11 @@
     </section>
 
     <!-- Video Section -->
-    <section class="section section-navy">
+    <section class="section">
         <div class="container">
             <div style="max-width: 900px; margin: 0 auto; text-align: center;">
-                <h2 style="color: #ffffff; font-size: 2.5rem; margin-bottom: 1rem;">See The Framework in Action</h2>
-                <p style="color: #e0e7ff; font-size: 1.25rem; line-height: 1.6; margin-bottom: 2.5rem;">A 7-minute conversation exploring why leadership legitimacy follows a multiplicative formula—and what that means for how you lead.</p>
+                <h2 style="color: #1e3a8a; margin-bottom: 1rem;">See The Framework in Action</h2>
+                <p class="lead" style="color: #6b7280; margin-bottom: 2.5rem;">A 7-minute conversation exploring why leadership legitimacy follows a multiplicative formula—and what that means for how you lead.</p>
                 
                 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.3);">
                     <iframe 
@@ -95,8 +95,8 @@
                     </iframe>
                 </div>
                 
-                <div style="margin-top: 1.5rem; color: #e0e7ff; font-size: 1rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
-                    <span id="video-views" style="font-weight: 600;">👁️ 146,000+ views</span>
+                <div style="margin-top: 1.5rem; color: #6b7280; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                    <span id="video-views" class="font-semibold">👁️ 146,000+ views</span>
                     <span style="opacity: 0.7;">•</span>
                     <span style="opacity: 0.9;">7 minutes</span>
                 </div>
@@ -107,7 +107,7 @@
     </section>
 
     <!-- The Problem -->
-    <section class="section section-gray">
+    <section class="section section-navy">
         <div class="container">
             <h2 class="section-title">The Pattern You've Seen</h2>
             <div class="three-col">
@@ -163,25 +163,56 @@
         </div>
     </section>
 
-    <!-- Free Chapter Offer -->
+    <!-- Testimonials Carousel -->
     <section class="section section-navy">
         <div class="container">
-            <div class="free-offer">
-                <h2>Get the First Chapter Free</h2>
-                <p>See how the framework applies to real leadership challenges. No fluff, no theory without practice.</p>
-                <form name="free-chapter" method="POST" action="/thank-you.html" data-netlify="true" data-netlify-honeypot="bot-field" class="email-form">
-                    <input type="hidden" name="form-name" value="free-chapter">
-                    <p style="display: none;"><label>Don't fill this out: <input name="bot-field" /></label></p>
-                    <div class="form-group-inline">
-                        <input type="email" name="email" placeholder="Your email address" required class="form-input">
-                        <button type="submit" class="btn-primary">Get Free Chapter</button>
+            <h2 class="section-title-center">What Technical Leaders Are Saying</h2>
+            
+            <div class="testimonial-carousel">
+                <div class="testimonial-wrapper">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-slide active">
+                        <blockquote class="testimonial-quote">
+                            "Great storytelling throughout. The reinvention chapter, which categorizes major promotion transition types, was particularly strong. Key insights that stuck: 'Leadership legitimacy must now be earned continuously,' 'An apology is a commitment to different behavior,' and 'Technical problems reward speed. Leadership problems reward patience.'"
+                        </blockquote>
+                        <p class="testimonial-author">— Sarvenaz Myslicki</p>
+                        <p class="testimonial-title">VP Engineering, Banking & Financials</p>
                     </div>
-                    <p class="form-note">We respect your privacy. No spam, ever.</p>
-                </form>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-slide">
+                        <blockquote class="testimonial-quote">
+                            "Great insights and more importantly practices we can all adopt. It resonated on so many levels. The importance of perception, the reality that trust is easy to lose and takes time to rebuild, and the desire to be a good leader, not a perfect leader. A truly great book on my permit to operate."
+                        </blockquote>
+                        <p class="testimonial-author">— Lee Barnett</p>
+                        <p class="testimonial-title">Strategic Executive Business & Technology Leader</p>
+                    </div>
+                    
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-slide">
+                        <blockquote class="testimonial-quote">
+                            "As someone who aspires to maybe someday be a leader, I was surprised about all the nuances of what it takes. I've always prided myself in my technical knowledge and expertise, but now I know it's not enough. I've worked with many leaders in past jobs and their PTO (Permit To Operate) balance often tips only on one vertex. It's a pleasure and a privilege to have a leader (like the author) who cares about the whole, and not just the bottom line."
+                        </blockquote>
+                        <p class="testimonial-author">— Carlo Leabres</p>
+                        <p class="testimonial-title">Sr Site Reliability Engineer</p>
+                    </div>
+                </div>
+                
+                <!-- Navigation -->
+                <div class="carousel-nav">
+                    <button class="carousel-arrow prev" aria-label="Previous testimonial">‹</button>
+                    <div class="carousel-dots">
+                        <button class="dot active" aria-label="Go to testimonial 1" data-slide="0"></button>
+                        <button class="dot" aria-label="Go to testimonial 2" data-slide="1"></button>
+                        <button class="dot" aria-label="Go to testimonial 3" data-slide="2"></button>
+                    </div>
+                    <button class="carousel-arrow next" aria-label="Next testimonial">›</button>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- Free Chapter Offer -->
     <!-- Books Section -->
     <section class="section">
         <div class="container">
@@ -212,20 +243,36 @@
         </div>
     </section>
 
-    <!-- Email Signup -->
-    <section class="section section-gray" id="email-signup">
+    <!-- Get Started Section -->
+    <section class="section section-navy" id="email-signup">
         <div class="container">
-            <div class="email-signup-box">
-                <h2>Get Framework Insights Weekly</h2>
-                <p>Real-world applications, research updates, and insights from conversations with 75+ technical leaders.</p>
-                <form name="newsletter" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" class="email-form">
-                    <input type="hidden" name="form-name" value="newsletter">
+            <div class="free-offer">
+                <h2>Get the Framework Starter Pack</h2>
+                <p class="lead" style="margin-bottom: 1.5rem;">Everything you need to start applying the Leadership Permit framework:</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-bottom: 2rem; text-align: left;">
+                    <div style="display: flex; align-items: start; gap: 0.75rem;">
+                        <span style="color: #ea580c; font-size: 1.5rem; font-weight: bold;">✓</span>
+                        <div>
+                            <strong style="display: block; margin-bottom: 0.25rem;">Free Chapter 1</strong>
+                            <span class="text-sm" style="opacity: 0.9;">Instant PDF download - The Nature of Leadership Permission</span>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: start; gap: 0.75rem;">
+                        <span style="color: #ea580c; font-size: 1.5rem; font-weight: bold;">✓</span>
+                        <div>
+                            <strong style="display: block; margin-bottom: 0.25rem;">Weekly Insights</strong>
+                            <span class="text-sm" style="opacity: 0.9;">Real-world applications from 75+ technical leaders</span>
+                        </div>
+                    </div>
+                </div>
+                <form name="free-chapter" method="POST" action="/thank-you.html" data-netlify="true" data-netlify-honeypot="bot-field" class="email-form">
+                    <input type="hidden" name="form-name" value="free-chapter">
                     <p style="display: none;"><label>Don't fill this out: <input name="bot-field" /></label></p>
                     <div class="form-group-inline">
                         <input type="email" name="email" placeholder="Your email address" required class="form-input">
-                        <button type="submit" class="btn-primary">Subscribe</button>
+                        <button type="submit" class="btn-primary">Get Started Free</button>
                     </div>
-                    <p class="form-note">Join technical leaders navigating responsibility at scale.</p>
+                    <p class="form-note">Join 1,000+ technical leaders. Unsubscribe anytime.</p>
                 </form>
             </div>
         </div>
@@ -273,5 +320,6 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script src="js/testimonial-carousel.js"></script>
 </body>
 </html>

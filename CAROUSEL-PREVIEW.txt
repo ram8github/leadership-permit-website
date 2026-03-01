@@ -1,0 +1,236 @@
+═══════════════════════════════════════════════════════════════
+TESTIMONIAL CAROUSEL - VISUAL PREVIEW
+═══════════════════════════════════════════════════════════════
+
+📍 LOCATION ON HOMEPAGE:
+
+[Hero Section]
+   ↓
+[Video Section] 
+   ↓
+[Problem Scenarios]
+   ↓
+[Framework Explanation]
+   ↓
+[✨ TESTIMONIALS CAROUSEL ✨] ← YOU ARE HERE (NEW!)
+   ↓
+[Free Chapter Offer]
+   ↓
+[Books Section]
+   ↓
+[Newsletter]
+   ↓
+[Footer]
+
+
+═══════════════════════════════════════════════════════════════
+DESKTOP VIEW (~1200px width):
+═══════════════════════════════════════════════════════════════
+
+                What Technical Leaders Are Saying
+
+┌─────────────────────────────────────────────────────────────┐
+│                                                             │
+│  "Great storytelling throughout. The reinvention chapter,   │
+│   which categorizes major promotion transition types, was   │
+│   particularly strong. Key insights that stuck: 'Leadership │
+│   legitimacy must now be earned continuously,' 'An apology  │
+│   is a commitment to different behavior,' and 'Technical    │
+│   problems reward speed. Leadership problems reward         │
+│   patience.'"                                               │
+│                                                             │
+│  — Sarvenaz Myslicki                                        │
+│  VP Engineering, Banking & Financials                       │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+
+              ‹    ● ○ ○    ›
+            [Auto-rotates every 7 seconds]
+            [Click arrows or dots to navigate]
+            [Hover to pause]
+
+
+═══════════════════════════════════════════════════════════════
+MOBILE VIEW (~375px width):
+═══════════════════════════════════════════════════════════════
+
+   What Technical Leaders
+        Are Saying
+
+┌───────────────────────────┐
+│                           │
+│ "Great storytelling       │
+│  throughout. The          │
+│  reinvention chapter,     │
+│  which categorizes major  │
+│  promotion transition     │
+│  types, was particularly  │
+│  strong. Key insights     │
+│  that stuck: 'Leadership  │
+│  legitimacy must now be   │
+│  earned continuously,'    │
+│  'An apology is a         │
+│  commitment to different  │
+│  behavior,' and           │
+│  'Technical problems      │
+│  reward speed.            │
+│  Leadership problems      │
+│  reward patience.'"       │
+│                           │
+│ — Sarvenaz Myslicki       │
+│ VP Engineering,           │
+│ Banking & Financials      │
+│                           │
+└───────────────────────────┘
+
+     ‹   ● ○ ○   ›
+  [Swipe left/right]
+  [Touch to pause]
+
+
+═══════════════════════════════════════════════════════════════
+THE 3 TESTIMONIALS (IN ORDER):
+═══════════════════════════════════════════════════════════════
+
+1️⃣  SARVENAZ MYSLICKI
+    VP Engineering, Banking & Financials
+    
+    Focus: Storytelling quality, specific insights
+    Highlights: "Leadership legitimacy must be earned continuously"
+    Tone: Analytical, appreciative
+    Length: Long (detailed)
+
+
+2️⃣  LEE BARNETT  
+    Strategic Executive Business & Technology Leader
+    
+    Focus: Practical application, resonance
+    Highlights: "Good leader, not perfect leader"
+    Tone: Reflective, relatable
+    Length: Medium
+
+
+3️⃣  CARLO LEABRES
+    Sr Site Reliability Engineer
+    
+    Focus: Aspiring leader perspective, learning
+    Highlights: "Technical knowledge isn't enough"
+    Tone: Humble, aspirational
+    Length: Long (personal)
+
+
+═══════════════════════════════════════════════════════════════
+DESIGN DETAILS:
+═══════════════════════════════════════════════════════════════
+
+COLORS:
+- Card Background:      White (#ffffff)
+- Card Shadow:          Light gray (subtle)
+- Quote Text:           Dark gray (#374151) italic
+- Author Name:          Navy blue (#1e3a8a) bold
+- Author Title:         Medium gray (#6b7280)
+- Arrow Border:         Navy blue (#1e3a8a)
+- Arrow Hover:          Navy blue fill + white text
+- Inactive Dots:        Light gray (#d1d5db)
+- Active Dot:           Orange (#ea580c) ← Your brand!
+
+SPACING:
+- Section padding:      3rem top/bottom
+- Card padding:         2rem
+- Card border-radius:   12px
+- Gap between elements: 1.5-2rem
+
+TYPOGRAPHY:
+- Section heading:      2rem, centered, navy
+- Quote text:           1.125rem, italic, gray
+- Author name:          1rem, bold, navy
+- Author title:         0.9rem, regular, gray
+
+
+═══════════════════════════════════════════════════════════════
+INTERACTIONS:
+═══════════════════════════════════════════════════════════════
+
+DESKTOP:
+✅ Auto-rotates every 7 seconds
+✅ Hover → pause rotation
+✅ Mouse leave → resume rotation
+✅ Click ‹ or › arrows → navigate
+✅ Click any dot → jump to that testimonial
+✅ Press ← or → keyboard arrows → navigate
+✅ Smooth 0.6s fade transitions
+
+MOBILE:
+✅ Auto-rotates every 7 seconds
+✅ Touch carousel → pause rotation
+✅ Release → resume rotation
+✅ Swipe left → next testimonial
+✅ Swipe right → previous testimonial
+✅ Tap arrows → navigate
+✅ Tap dots → jump to testimonial
+
+ACCESSIBILITY:
+✅ Keyboard navigation (arrow keys)
+✅ ARIA labels on buttons
+✅ Screen reader friendly
+✅ Focus indicators
+✅ Semantic HTML
+
+
+═══════════════════════════════════════════════════════════════
+ANIMATION SEQUENCE:
+═══════════════════════════════════════════════════════════════
+
+T=0s:   Testimonial 1 (Sarvenaz) visible
+        ● ○ ○
+        
+T=7s:   Fade out #1, fade in #2 (Lee)
+        ○ ● ○
+        
+T=14s:  Fade out #2, fade in #3 (Carlo)
+        ○ ○ ●
+        
+T=21s:  Fade out #3, fade in #1 (loop)
+        ● ○ ○
+        
+[Continues forever unless paused]
+
+
+═══════════════════════════════════════════════════════════════
+SPACE COMPARISON:
+═══════════════════════════════════════════════════════════════
+
+WITHOUT TESTIMONIALS:
+Framework section → Free chapter (direct)
+Space: 0px
+
+WITH ROTATING CAROUSEL:
+Framework section → Testimonials (~250px) → Free chapter
+Desktop: +250px (0.3 screens)
+Mobile:  +350px (0.5 screens)
+
+WITH 3 STATIC CARDS:
+Framework section → Testimonials (~600px) → Free chapter
+Desktop: +600px (0.8 screens)
+Mobile:  +900px (1.5 screens)
+
+🎯 CAROUSEL SAVES 60% SPACE vs STATIC CARDS!
+
+
+═══════════════════════════════════════════════════════════════
+TECHNICAL SPECS:
+═══════════════════════════════════════════════════════════════
+
+JavaScript: ~140 lines
+CSS:        ~130 lines
+HTML:       ~60 lines per testimonial
+
+Load Impact:  Minimal (~5KB total)
+Dependencies: None (vanilla JS)
+Browser:      Works in all modern browsers
+Mobile:       iOS Safari, Chrome, Firefox tested
+
+
+═══════════════════════════════════════════════════════════════
+READY TO DEPLOY! 🚀
+═══════════════════════════════════════════════════════════════
