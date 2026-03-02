@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+Sitemap: https://leadershippermit.com/sitemap.xml
+
+# Allow all pages
+Allow: /index.html
+Allow: /framework.html
+Allow: /books.html
+Allow: /about.html
+Allow: /resources.html
+Allow: /contact.html
+Allow: /thank-you.html
+
+# Allow downloads
+Allow: /downloads/
+
+# Allow resources
+Allow: /css/
+Allow: /js/
+Allow: /images/
