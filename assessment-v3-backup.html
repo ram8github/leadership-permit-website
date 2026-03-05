@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leadership Permit Assessment | Check Your Score</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            min-height: 100vh;
+            padding: 2rem 1rem;
+            color: #1f2937;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .quiz-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 3rem 2rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Landing Page */
+        .landing {
+            text-align: center;
+        }
+
+        .landing h1 {
+            font-size: 2.5rem;
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+        }
+
+        .landing .subtitle {
+            font-size: 1.25rem;
+            color: #6b7280;
+            margin-bottom: 2rem;
+        }
+
+        .landing .features {
+            text-align: left;
+            max-width: 500px;
+            margin: 2rem auto;
+            color: #374151;
+        }
+
+        .landing .features div {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .landing .features div:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #ea580c;
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+
+        .btn-primary {
+            background: #ea580c;
+            color: white;
+            padding: 1rem 3rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 2rem;
+        }
+
+        .btn-primary:hover {
+            background: #c2410c;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(234, 88, 12, 0.3);
+        }
+
+        .btn-secondary {
+            background: #1e3a8a;
+            color: white;
+            padding: 0.75rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin: 0.5rem;
+        }
+
+        .btn-secondary:hover {
+            background: #1e40af;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            margin-bottom: 2rem;
+        }
+
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ea580c 0%, #f97316 100%);
+            transition: width 0.3s ease;
+        }
+
+        /* Question */
+        .question-container {
+            display: none;
+        }
+
+        .question-container.active {
+            display: block;
+        }
+
+        .pillar-tag {
+            display: inline-block;
+            background: #dbeafe;
+            color: #1e3a8a;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .question-text {
+            font-size: 1.5rem;
+            color: #1e3a8a;
+            margin-bottom: 2rem;
+            line-height: 1.4;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .option {
+            background: #f9fafb;
+            border: 2px solid #e5e7eb;
+            padding: 1.25rem;
+            border-radius: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .option:hover {
+            border-color: #ea580c;
+            background: #fff7ed;
+        }
+
+        .option.selected {
+            border-color: #ea580c;
+            background: #fff7ed;
+            box-shadow: 0 4px 12px rgba(234, 88, 12, 0.2);
+        }
+
+        .option-radio {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid #d1d5db;
+            flex-shrink: 0;
+            margin-top: 2px;
+            position: relative;
+        }
+
+        .option.selected .option-radio {
+            border-color: #ea580c;
+        }
+
+        .option.selected .option-radio:after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ea580c;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .option-text {
+            flex: 1;
+            color: #374151;
+            line-height: 1.5;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        /* Results Page */
+        .results {
+            display: none;
+        }
+
+        .results.active {
+            display: block;
+        }
+
+        .score-display {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            color: white;
+        }
+
+        .score-label {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
+        }
+
+        .score-value {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .score-tier {
+            font-size: 1.25rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .pillar-scores {
+            margin: 2rem 0;
+        }
+
+        .pillar-score {
+            margin-bottom: 1.5rem;
+        }
+
+        .pillar-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .pillar-name {
+            font-weight: 600;
+            color: #1e3a8a;
+            font-size: 1.125rem;
+        }
+
+        .pillar-value {
+            font-weight: 600;
+            color: #6b7280;
+        }
+
+        .pillar-bar {
+            height: 12px;
+            background: #e5e7eb;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .pillar-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #1e3a8a 0%, #3b82f6 100%);
+            transition: width 0.6s ease;
+        }
+
+        .pillar-bar-fill.weak {
+            background: linear-gradient(90deg, #ea580c 0%, #f97316 100%);
+        }
+
+        .formula-box {
+            background: #f9fafb;
+            border: 2px solid #e5e7eb;
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .formula-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+        }
+
+        .formula-display {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #374151;
+            text-align: center;
+            padding: 1rem;
+            background: white;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .formula-explanation {
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        .insight-box {
+            background: #fff7ed;
+            border-left: 4px solid #ea580c;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0.5rem;
+        }
+
+        .insight-title {
+            font-weight: 600;
+            color: #1e3a8a;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .insight-content {
+            color: #374151;
+            line-height: 1.6;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .cta-box h3 {
+            margin-bottom: 1rem;
+        }
+
+        .cta-box p {
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
+        }
+
+        .email-form {
+            display: flex;
+            gap: 0.5rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .email-input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Navigation */
+        .quiz-nav {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+            border-radius: 1rem 1rem 0 0;
+        }
+
+        .quiz-nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .quiz-logo {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1e3a8a;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .quiz-logo:hover {
+            color: #ea580c;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #6b7280;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #1e3a8a;
+        }
+
+        @media (max-width: 640px) {
+            .nav-links {
+                display: none;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .quiz-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .landing h1 {
+                font-size: 2rem;
+            }
+
+            .question-text {
+                font-size: 1.25rem;
+            }
+
+            .score-value {
+                font-size: 3rem;
+            }
+
+            .email-form {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="quiz-card">
+            <!-- Navigation -->
+            <div class="quiz-nav">
+                <div class="quiz-nav-content">
+                    <a href="/" class="quiz-logo">← The Leadership Permit</a>
+                    <div class="nav-links">
+                        <a href="/framework.html">Framework</a>
+                        <a href="/resources.html">Resources</a>
+                        <a href="/about.html">About</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Landing Page -->
+            <div id="landing" class="landing">
+                <h1>Check Your Leadership Permit Score</h1>
+                <p class="subtitle">Discover which pillar is limiting your influence—and what to do about it</p>
+                
+                <div class="features">
+                    <div>12 questions, 5 minutes</div>
+                    <div>Personalized score + breakdown</div>
+                    <div>See your P × T × O analysis</div>
+                    <div>Immediate, actionable insights</div>
+                </div>
+
+                <button class="btn-primary" onclick="startQuiz()">Start Assessment</button>
+                
+                <p style="margin-top: 1rem; color: #9ca3af; font-size: 0.875rem;">No email required to see results</p>
+            </div>
+
+            <!-- Progress Bar -->
+            <div id="progress" class="progress-container hidden">
+                <div class="progress-text">
+                    <span id="progress-label">Question 1 of 12</span>
+                    <span id="pillar-label">PERCEPTION</span>
+                </div>
+                <div class="progress-bar">
+                    <div id="progress-fill" class="progress-fill" style="width: 8.33%"></div>
+                </div>
+            </div>
+
+            <!-- Questions -->
+            <div id="questions-container"></div>
+
+            <!-- Results -->
+            <div id="results" class="results">
+                <div class="score-display">
+                    <div class="score-label">Your Leadership Permit Score</div>
+                    <div class="score-value" id="final-score">--</div>
+                    <div class="score-tier" id="score-tier">--</div>
+                </div>
+
+                <div class="pillar-scores">
+                    <h3 style="color: #1e3a8a; margin-bottom: 1.5rem;">Your Pillar Breakdown</h3>
+                    
+                    <div class="pillar-score">
+                        <div class="pillar-header">
+                            <span class="pillar-name">PERCEPTION</span>
+                            <span class="pillar-value"><span id="p-raw">--</span>/20 (<span id="p-pct">--</span>%)</span>
+                        </div>
+                        <div class="pillar-bar">
+                            <div id="p-bar" class="pillar-bar-fill" style="width: 0%"></div>
+                        </div>
+                    </div>
+
+                    <div class="pillar-score">
+                        <div class="pillar-header">
+                            <span class="pillar-name">TALENT</span>
+                            <span class="pillar-value"><span id="t-raw">--</span>/20 (<span id="t-pct">--</span>%)</span>
+                        </div>
+                        <div class="pillar-bar">
+                            <div id="t-bar" class="pillar-bar-fill" style="width: 0%"></div>
+                        </div>
+                    </div>
+
+                    <div class="pillar-score">
+                        <div class="pillar-header">
+                            <span class="pillar-name">OUTCOMES</span>
+                            <span class="pillar-value"><span id="o-raw">--</span>/20 (<span id="o-pct">--</span>%)</span>
+                        </div>
+                        <div class="pillar-bar">
+                            <div id="o-bar" class="pillar-bar-fill" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-box">
+                    <div class="formula-title">The Multiplicative Formula</div>
+                    <div class="formula-display" id="formula">--</div>
+                    <div class="formula-explanation" id="formula-explanation">--</div>
+                </div>
+
+                <div class="insight-box">
+                    <div class="insight-title">
+                        <span>🎯</span>
+                        <span id="insight-title">Your Focus Area</span>
+                    </div>
+                    <div class="insight-content" id="insight-content">--</div>
+                </div>
+
+                <div class="cta-box">
+                    <h3>Get Your Detailed Action Plan</h3>
+                    <p>Receive personalized recommendations for your weakest pillar, plus weekly framework insights</p>
+                    <form class="email-form" name="quiz-results" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html">
+                        <input type="hidden" name="form-name" value="quiz-results">
+                        <input type="hidden" name="bot-field">
+                        <input type="hidden" name="perception-score" id="form-p-score">
+                        <input type="hidden" name="talent-score" id="form-t-score">
+                        <input type="hidden" name="outcomes-score" id="form-o-score">
+                        <input type="hidden" name="permit-score" id="form-permit-score">
+                        <input type="hidden" name="weakest-pillar" id="form-weakest">
+                        <input type="email" name="email" class="email-input" placeholder="Enter your email" required>
+                        <button type="submit" class="btn-secondary">Get Action Plan</button>
+                    </form>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="btn-secondary" onclick="resetQuiz()">Retake Assessment</button>
+                    <a href="/" class="btn-secondary" style="display: inline-block; text-decoration: none;">Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Quiz Data
+        const quizData = {
+            questions: [
+                // PERCEPTION (Q1-4)
+                {
+                    pillar: 'PERCEPTION',
+                    text: 'When you need to implement a difficult change, how does your team typically respond?',
+                    options: [
+                        'They resist actively, even when I explain the reasoning',
+                        'They comply reluctantly with visible skepticism',
+                        'They\'re neutral - they\'ll do it but aren\'t bought in',
+                        'They generally trust my judgment with minimal pushback',
+                        'They actively support and help convince others'
+                    ]
+                },
+                {
+                    pillar: 'PERCEPTION',
+                    text: 'How often do people say they\'re unclear about your priorities or what you\'re thinking?',
+                    options: [
+                        'Frequently - "we have no idea what you want" is common',
+                        'Regularly - there\'s often confusion about direction',
+                        'Sometimes - mostly clear but occasional misalignment',
+                        'Rarely - they usually understand my focus',
+                        'Almost never - my priorities are consistently transparent'
+                    ]
+                },
+                {
+                    pillar: 'PERCEPTION',
+                    text: 'When decisions are made in meetings you\'re NOT in, how accurately do people predict your position?',
+                    options: [
+                        'I have no idea what they\'d say',
+                        'They often guess wrong or assume the worst',
+                        'Hit or miss - sometimes right, sometimes not',
+                        'They usually predict my stance accurately',
+                        'They can reliably represent what I\'d say'
+                    ]
+                },
+                {
+                    pillar: 'PERCEPTION',
+                    text: 'When you make a mistake or a decision doesn\'t work out, what happens to trust?',
+                    options: [
+                        'Trust erodes significantly and takes months to rebuild',
+                        'People question my judgment for weeks afterward',
+                        'There\'s temporary damage but it recovers',
+                        'Team gives me grace, we learn and move on',
+                        'My track record is strong enough that one mistake doesn\'t impact trust'
+                    ]
+                },
+                // TALENT (Q5-8)
+                {
+                    pillar: 'TALENT',
+                    text: 'How often do you encounter situations where you lack the skills or knowledge to make the right call?',
+                    options: [
+                        'Frequently - I\'m often in over my head',
+                        'Regularly - I have significant gaps in key areas',
+                        'Sometimes - clear gaps but I can find help',
+                        'Rarely - I have most skills needed',
+                        'Almost never - I\'m well-equipped for my role'
+                    ]
+                },
+                {
+                    pillar: 'TALENT',
+                    text: 'How many of your direct reports have grown significantly in capability under your leadership?',
+                    options: [
+                        'None or very few - people plateau or leave',
+                        'Some show growth but it\'s inconsistent',
+                        'About half demonstrate meaningful development',
+                        'Most grow with clear evidence of progression',
+                        'Nearly everyone develops substantially'
+                    ]
+                },
+                {
+                    pillar: 'TALENT',
+                    text: 'When you look back at major decisions from 6-12 months ago, how do they hold up?',
+                    options: [
+                        'Many were wrong and caused problems',
+                        'More misses than hits',
+                        'Mixed - some good, some I\'d change',
+                        'Mostly solid - majority were right calls',
+                        'Very strong track record - consistently sound'
+                    ]
+                },
+                {
+                    pillar: 'TALENT',
+                    text: 'How quickly do you recognize and adapt when your approach isn\'t working?',
+                    options: [
+                        'I stick with my approach even when failing',
+                        'I\'m slow to recognize when change is needed',
+                        'I eventually adjust but it takes time',
+                        'I notice quickly and course-correct',
+                        'I actively seek feedback and adapt rapidly'
+                    ]
+                },
+                // OUTCOMES (Q9-12)
+                {
+                    pillar: 'OUTCOMES',
+                    text: 'Over the past year, what percentage of your key commitments were achieved?',
+                    options: [
+                        'Less than 40% - most objectives missed',
+                        '40-60% - some hits, many misses',
+                        '60-75% - more hits than misses',
+                        '75-90% - strong delivery on commitments',
+                        '90%+ - consistently deliver what I commit to'
+                    ]
+                },
+                {
+                    pillar: 'OUTCOMES',
+                    text: 'Are you building capability for the future or mortgaging it for short-term results?',
+                    options: [
+                        'Clearly mortgaging - tech debt, burnout, shortcuts',
+                        'Mostly short-term focused',
+                        'Balanced but could invest more long-term',
+                        'Good balance - delivering now while building future',
+                        'Exceptional - current results AND stronger future capability'
+                    ]
+                },
+                {
+                    pillar: 'OUTCOMES',
+                    text: 'How predictable is your team\'s delivery?',
+                    options: [
+                        'Highly unpredictable - frequent misses and surprises',
+                        'Inconsistent - sometimes hit, often slip',
+                        'Moderately reliable - usually close',
+                        'Very reliable - rarely miss commitments',
+                        'Extremely predictable - stakeholders count on us'
+                    ]
+                },
+                {
+                    pillar: 'OUTCOMES',
+                    text: 'What\'s the measurable business impact of what your team delivers?',
+                    options: [
+                        'Unclear or minimal - hard to show value',
+                        'Some impact but not compelling',
+                        'Solid impact - clear value to business',
+                        'Strong impact - clearly moving key metrics',
+                        'Exceptional impact - recognized as critical driver'
+                    ]
+                }
+            ]
+        };
+
+        // State
+        let currentQuestion = 0;
+        let answers = [];
+
+        // Initialize
+        function startQuiz() {
+            document.getElementById('landing').classList.add('hidden');
+            document.getElementById('progress').classList.remove('hidden');
+            renderQuestions();
+            showQuestion(0);
+        }
+
+        function renderQuestions() {
+            const container = document.getElementById('questions-container');
+            
+            quizData.questions.forEach((q, index) => {
+                const qDiv = document.createElement('div');
+                qDiv.className = 'question-container';
+                qDiv.id = `question-${index}`;
+                
+                qDiv.innerHTML = `
+                    <div class="pillar-tag">${q.pillar}</div>
+                    <div class="question-text">${q.text}</div>
+                    <div class="options">
+                        ${q.options.map((opt, i) => `
+                            <div class="option" onclick="selectOption(${index}, ${i + 1})">
+                                <div class="option-radio"></div>
+                                <div class="option-text">${opt}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="navigation">
+                        <button class="btn-secondary" onclick="previousQuestion()" ${index === 0 ? 'style="visibility: hidden;"' : ''}>← Previous</button>
+                        <button class="btn-secondary" id="next-${index}" onclick="nextQuestion()" disabled style="opacity: 0.5;">Next →</button>
+                    </div>
+                `;
+                
+                container.appendChild(qDiv);
+            });
+        }
+
+        function showQuestion(index) {
+            // Hide all questions
+            document.querySelectorAll('.question-container').forEach(q => {
+                q.classList.remove('active');
+            });
+            
+            // Show current question
+            document.getElementById(`question-${index}`).classList.add('active');
+            currentQuestion = index;
+            
+            // Update progress
+            const progress = ((index + 1) / 12) * 100;
+            document.getElementById('progress-fill').style.width = `${progress}%`;
+            document.getElementById('progress-label').textContent = `Question ${index + 1} of 12`;
+            
+            const pillar = quizData.questions[index].pillar;
+            document.getElementById('pillar-label').textContent = pillar;
+            
+            // Restore selection if answer exists
+            if (answers[index]) {
+                const options = document.querySelectorAll(`#question-${index} .option`);
+                options[answers[index] - 1].classList.add('selected');
+                document.getElementById(`next-${index}`).disabled = false;
+                document.getElementById(`next-${index}`).style.opacity = '1';
+            }
+        }
+
+        function selectOption(questionIndex, value) {
+            // Remove previous selection
+            const options = document.querySelectorAll(`#question-${questionIndex} .option`);
+            options.forEach(opt => opt.classList.remove('selected'));
+            
+            // Add new selection
+            options[value - 1].classList.add('selected');
+            
+            // Store answer
+            answers[questionIndex] = value;
+            
+            // Enable next button
+            document.getElementById(`next-${questionIndex}`).disabled = false;
+            document.getElementById(`next-${questionIndex}`).style.opacity = '1';
+        }
+
+        function previousQuestion() {
+            if (currentQuestion > 0) {
+                showQuestion(currentQuestion - 1);
+            }
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < 11) {
+                showQuestion(currentQuestion + 1);
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            // Hide questions and progress
+            document.getElementById('progress').classList.add('hidden');
+            document.querySelectorAll('.question-container').forEach(q => {
+                q.classList.remove('active');
+            });
+            
+            // Calculate scores
+            const results = calculateScores();
+            
+            // Display results
+            displayResults(results);
+            
+            // Show results section
+            document.getElementById('results').classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        function calculateScores() {
+            // Raw scores (out of 20)
+            const P_raw = answers[0] + answers[1] + answers[2] + answers[3];
+            const T_raw = answers[4] + answers[5] + answers[6] + answers[7];
+            const O_raw = answers[8] + answers[9] + answers[10] + answers[11];
+            
+            // Percentages (0-1 scale)
+            const P = P_raw / 20;
+            const T = T_raw / 20;
+            const O = O_raw / 20;
+            
+            // Leadership Permit Score (multiplicative)
+            const permitScore = P * T * O;
+            
+            // Percentages for display
+            const P_pct = Math.round(P * 100);
+            const T_pct = Math.round(T * 100);
+            const O_pct = Math.round(O * 100);
+            const permit_pct = Math.round(permitScore * 1000) / 10;
+            
+            // Find weakest pillar
+            const pillars = [
+                { name: 'PERCEPTION', raw: P_raw, pct: P_pct },
+                { name: 'TALENT', raw: T_raw, pct: T_pct },
+                { name: 'OUTCOMES', raw: O_raw, pct: O_pct }
+            ];
+            const weakest = pillars.sort((a, b) => a.raw - b.raw)[0];
+            
+            // Get tier
+            let tier;
+            if (permit_pct >= 73) tier = { label: 'ELITE', level: 5 };
+            else if (permit_pct >= 51) tier = { label: 'STRONG', level: 4 };
+            else if (permit_pct >= 34) tier = { label: 'DEVELOPING', level: 3 };
+            else if (permit_pct >= 22) tier = { label: 'STRUGGLING', level: 2 };
+            else tier = { label: 'CRITICAL', level: 1 };
+            
+            return {
+                P_raw, T_raw, O_raw,
+                P_pct, T_pct, O_pct,
+                permit_pct,
+                weakest,
+                tier
+            };
+        }
+
+        function displayResults(results) {
+            // Overall score
+            document.getElementById('final-score').textContent = `${results.permit_pct}%`;
+            document.getElementById('score-tier').textContent = results.tier.label;
+            
+            // Pillar scores
+            document.getElementById('p-raw').textContent = results.P_raw;
+            document.getElementById('p-pct').textContent = results.P_pct;
+            document.getElementById('p-bar').style.width = `${results.P_pct}%`;
+            
+            document.getElementById('t-raw').textContent = results.T_raw;
+            document.getElementById('t-pct').textContent = results.T_pct;
+            document.getElementById('t-bar').style.width = `${results.T_pct}%`;
+            
+            document.getElementById('o-raw').textContent = results.O_raw;
+            document.getElementById('o-pct').textContent = results.O_pct;
+            document.getElementById('o-bar').style.width = `${results.O_pct}%`;
+            
+            // Mark weakest pillar
+            if (results.weakest.name === 'PERCEPTION') {
+                document.getElementById('p-bar').classList.add('weak');
+            } else if (results.weakest.name === 'TALENT') {
+                document.getElementById('t-bar').classList.add('weak');
+            } else {
+                document.getElementById('o-bar').classList.add('weak');
+            }
+            
+            // Formula
+            document.getElementById('formula').textContent = 
+                `${results.P_pct}% × ${results.T_pct}% × ${results.O_pct}% = ${results.permit_pct}%`;
+            
+            // Formula explanation
+            document.getElementById('formula-explanation').innerHTML = 
+                getFormulaExplanation(results);
+            
+            // Insight
+            let insightTitle = `Focus on ${results.weakest.name}`;
+            if (results.permit_pct >= 99) {
+                insightTitle = "Elite Leadership - Maintain Excellence";
+            } else if (results.P_pct === results.T_pct && results.T_pct === results.O_pct) {
+                insightTitle = "Balanced Pillars - Grow Together";
+            }
+            document.getElementById('insight-title').textContent = insightTitle;
+            document.getElementById('insight-content').innerHTML = 
+                getInsight(results);
+            
+            // Populate form fields
+            document.getElementById('form-p-score').value = results.P_pct;
+            document.getElementById('form-t-score').value = results.T_pct;
+            document.getElementById('form-o-score').value = results.O_pct;
+            document.getElementById('form-permit-score').value = results.permit_pct;
+            document.getElementById('form-weakest').value = results.weakest.name;
+        }
+
+        function getFormulaExplanation(results) {
+            const w = results.weakest;
+            
+            // Perfect score - special message
+            if (results.permit_pct >= 99) {
+                return `Exceptional! You've achieved near-perfect scores across all three pillars. Your leadership permit is at the highest level. This rare combination of strong Perception, Talent, and Outcomes creates maximum leadership legitimacy. Your challenge now is to maintain this excellence and help others develop their leadership permits.`;
+            }
+            
+            // All pillars equal - different message
+            if (results.P_pct === results.T_pct && results.T_pct === results.O_pct) {
+                return `Your three pillars are perfectly balanced at ${results.P_pct}% each. While balance is valuable, the multiplicative formula (${results.P_pct}% × ${results.P_pct}% × ${results.P_pct}% = ${results.permit_pct}%) shows you need to raise all three together to increase your leadership permit. Focus on systematic improvement across all pillars.`;
+            }
+            
+            if (results.tier.level >= 4) {
+                return `You have a strong leadership permit across all three pillars. ${w.name} at ${w.pct}% is your relative weakness—focus here for the highest impact. Your other pillars are strong, so improving ${w.name} will have a multiplicative effect on your overall permit.`;
+            } else if (results.tier.level === 3) {
+                return `Your ${w.name} pillar (${w.pct}%) is limiting your overall leadership legitimacy. Even with ${results.permit_pct >= 40 ? 'decent' : 'some'} performance in other areas, this weakness cuts your permit to ${results.permit_pct}%. This demonstrates why the formula is multiplicative: your weakest pillar undermines everything else.`;
+            } else {
+                return `Your leadership permit is significantly constrained. ${w.name} at ${w.pct}% is your weakest pillar, but you likely need to strengthen all three areas. The multiplicative formula shows that weakness in any pillar severely limits your overall legitimacy.`;
+            }
+        }
+
+        function getInsight(results) {
+            const w = results.weakest;
+            
+            // Perfect score - special message
+            if (results.permit_pct >= 99) {
+                return `
+                    <p style="margin-bottom: 1rem;"><strong>You've achieved elite leadership legitimacy!</strong></p>
+                    <p style="margin-bottom: 1rem;">With near-perfect scores across all three pillars (Perception: ${results.P_pct}%, Talent: ${results.T_pct}%, Outcomes: ${results.O_pct}%), you've reached the highest level of the Leadership Permit framework.</p>
+                    <p style="margin-bottom: 1rem;"><strong>Your focus now:</strong></p>
+                    <p style="margin-bottom: 0.5rem;">• Maintain this excellence over time</p>
+                    <p style="margin-bottom: 0.5rem;">• Watch for erosion as relationships and context change</p>
+                    <p style="margin-bottom: 0.5rem;">• Help others develop their leadership permits</p>
+                    <p style="margin-top: 1rem;">Remember: Even strong leaders can lose their permit through complacency. The Erosion Paradox means ongoing renewal is essential.</p>
+                `;
+            }
+            
+            // All pillars equal
+            if (results.P_pct === results.T_pct && results.T_pct === results.O_pct) {
+                const targetPct = Math.min(results.P_pct + 10, 100);
+                const improvedScore = Math.round((targetPct / 100) * (targetPct / 100) * (targetPct / 100) * 1000) / 10;
+                const improvement = Math.round(improvedScore - results.permit_pct);
+                
+                return `
+                    <p style="margin-bottom: 1rem;"><strong>Your pillars are perfectly balanced at ${results.P_pct}% each.</strong></p>
+                    <p style="margin-bottom: 1rem;">Since all three are equal, you need to improve them together. The multiplicative formula means raising all three by 10% each would have significant impact:</p>
+                    <p style="margin-bottom: 1rem;"><strong>If you improve all pillars to ${targetPct}%:</strong></p>
+                    <p style="margin-bottom: 1rem;">Your Leadership Permit Score would increase to <strong>${improvedScore}%</strong> (+${improvement} points).</p>
+                    <p>Focus on systematic development across all three pillars for maximum impact.</p>
+                `;
+            }
+            
+            // Normal case - has a weakest pillar
+            const targetRaw = Math.min(w.raw + 2, 20);
+            const targetPct = Math.round((targetRaw / 20) * 100);
+            
+            // Calculate improved score
+            let newScores = {
+                P: results.P_pct / 100,
+                T: results.T_pct / 100,
+                O: results.O_pct / 100
+            };
+            
+            if (w.name === 'PERCEPTION') newScores.P = targetPct / 100;
+            else if (w.name === 'TALENT') newScores.T = targetPct / 100;
+            else newScores.O = targetPct / 100;
+            
+            const improvedScore = Math.round(newScores.P * newScores.T * newScores.O * 1000) / 10;
+            const improvement = Math.round(improvedScore - results.permit_pct);
+            const improvementPct = Math.round((improvement / results.permit_pct) * 100);
+            
+            return `
+                <p style="margin-bottom: 1rem;">Your ${w.name} score (${w.raw}/20, ${w.pct}%) is your weakest pillar and the biggest constraint on your leadership permit.</p>
+                <p style="margin-bottom: 1rem;"><strong>If you improve ${w.name} from ${w.raw}/20 to ${targetRaw}/20 (${targetPct}%):</strong></p>
+                <p style="margin-bottom: 1rem;">Your Leadership Permit Score would increase to <strong>${improvedScore}%</strong> (${improvement > 0 ? '+' : ''}${improvement} points, ${improvementPct}% improvement).</p>
+                <p>This is the power of the multiplicative formula: improving your weakest pillar has exponential impact on your overall leadership legitimacy.</p>
+            `;
+        }
+
+        function resetQuiz() {
+            currentQuestion = 0;
+            answers = [];
+            
+            // Hide results
+            document.getElementById('results').classList.remove('active');
+            
+            // Show landing
+            document.getElementById('landing').classList.remove('hidden');
+            
+            // Reset all selections
+            document.querySelectorAll('.option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            
+            // Disable all next buttons
+            document.querySelectorAll('[id^="next-"]').forEach(btn => {
+                btn.disabled = true;
+                btn.style.opacity = '0.5';
+            });
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
