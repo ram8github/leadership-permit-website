@@ -1,4 +1,34 @@
 // Leadership Permit Website JavaScript
+
+// Mobile navigation toggle
+document.addEventListener('DOMContentLoaded', function() {
+    var hamburger = document.getElementById('nav-hamburger');
+    var navMenu = document.querySelector('.nav-menu');
+
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('open');
+            navMenu.classList.toggle('open');
+        });
+
+        // Close menu when a nav link is clicked
+        navMenu.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('open');
+                navMenu.classList.remove('open');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                hamburger.classList.remove('open');
+                navMenu.classList.remove('open');
+            }
+        });
+    }
+});
+
 // Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
