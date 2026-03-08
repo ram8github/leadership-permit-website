@@ -1,30 +1,29 @@
-// Fetch YouTube video view count
+// Fetches live YouTube view count via a Netlify serverless function.
+// The YouTube API key is stored in Netlify environment variables — never in this file.
+// Setup: Netlify → Site Settings → Environment Variables → add YOUTUBE_API_KEY
+
 async function getYouTubeViews() {
-    const videoId = 'plRjAYaDbTE';
-    const apiKey = 'AIzaSyBaBVlSKewuyaiuOlq59hz3XkujgQ3PLyY';
-    
+    const el = document.getElementById('video-views');
+    if (!el) return;
+
     try {
-        const response = await fetch(
-            `https://www.googleapis.com/youtube/v3/videos?part=statistics&id=${videoId}&key=${apiKey}`
-        );
+        const response = await fetch('/.netlify/functions/youtube-views');
+
+        if (!response.ok) throw new Error('Function returned ' + response.status);
+
         const data = await response.json();
-        
-        if (data.items && data.items[0]) {
-            const views = parseInt(data.items[0].statistics.viewCount);
-            const formattedViews = views.toLocaleString();
-            document.getElementById('video-views').innerHTML = `👁️ ${formattedViews} views`;
+
+        if (data.views) {
+            el.innerHTML = '👁️ ' + data.views.toLocaleString() + ' views';
         } else {
-            // Fallback if API fails
-            document.getElementById('video-views').innerHTML = '👁️ 146,000+ views';
+            throw new Error('No views in response');
         }
-    } catch (error) {
-        console.error('YouTube API error:', error);
-        // Fallback to static count if API fails
-        document.getElementById('video-views').innerHTML = '👁️ 146,000+ views';
+    } catch (err) {
+        // Fallback to static count if anything fails
+        el.innerHTML = '👁️ 146,000+ views';
     }
 }
 
-// Load views when page loads
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', getYouTubeViews);
 } else {

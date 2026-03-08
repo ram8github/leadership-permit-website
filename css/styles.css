@@ -106,8 +106,15 @@ p {
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 2rem;
+    gap: 1.25rem;
     align-items: center;
+    flex-wrap: nowrap;
+}
+
+.nav-menu > li > a:not(.btn-primary-small) {
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
 }
 
 .nav-hamburger {

@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
+
 Sitemap: https://leadershippermit.com/sitemap.xml
 
 # Allow all pages
@@ -10,11 +11,12 @@ Allow: /about.html
 Allow: /resources.html
 Allow: /contact.html
 Allow: /thank-you.html
+Allow: /assessment.html
+Allow: /leadership-log.html
+Allow: /log/
 
-# Allow downloads
+# Allow assets
 Allow: /downloads/
-
-# Allow resources
 Allow: /css/
 Allow: /js/
 Allow: /images/
